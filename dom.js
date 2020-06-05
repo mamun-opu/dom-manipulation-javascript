@@ -30,7 +30,7 @@
 // const itemList = document.getElementsByClassName("list-group-item");
 // console.log(itemList[0].textContent);
 // console.log(itemList[2].innerText);
-// itemList[1].style.color = 'red';
+// // itemList[1].style.color = 'red';
 // // itemList[3].style.backgroundColor = '#f4f4f4';
 
 // for(let i = 0; i < itemList.length; i++){
@@ -51,11 +51,11 @@
 
 //***************QUERY SELECTOR**************//
 
-// const header = document.querySelector('#main-header');
-// header.style.borderBottom = 'solid 5px grey';
+const header = document.querySelector('#main-header');
+header.style.borderBottom = 'solid 5px grey';
 
-// const input = document.querySelector('input');
-// input.placeholder = 'Type here';
+const input = document.querySelector('input');
+input.placeholder = 'Type here';
 
 // const submit = document.querySelector('input[type = "submit"]');
 // // submit.value = "send";
@@ -73,14 +73,14 @@
 
 // // *******QUERY SELECTOR ALL****** //
 
-// const odd = document.querySelectorAll('.list-group-item:nth-child(odd)');
+const odd = document.querySelectorAll('.list-group-item:nth-child(odd)');
 
-// const even = document.querySelectorAll('.list-group-item:nth-child(even)');
+const even = document.querySelectorAll('.list-group-item:nth-child(even)');
 
-// for(let i = 0; i < odd.length; i++){
-//     odd[i].style.backgroundColor = 'grey';
-//     even[i].style.backgroundColor = '#f4f4f4';
-// }
+for(let i = 0; i < odd.length; i++){
+    odd[i].style.backgroundColor = 'grey';
+    even[i].style.backgroundColor = '#f4f4f4';
+}
 
 // //**********TRAVERSING THE DOM *******/
 // const item = document.querySelector('#items');
@@ -149,3 +149,80 @@
 // container.insertBefore(newDiv,h1);
 
 // newDiv.style.fontSize = '30px';
+
+
+//*********Event********** */
+// const buttonClicked = document.getElementById('button');
+// console.log(buttonClicked);
+// buttonClicked.addEventListener('click',btnclicked);
+
+// function btnclicked(event){
+//     // console.log('mouse hlai click marse!');
+//     document.getElementById('main').style.backgroundColor = '#f4f4f4';
+//     buttonClicked.innerText = 'Click maira dise';
+//     console.log(event.target);
+//     console.log(event.target.id);
+//     console.log(event.target.className);
+//     console.log(event.target.classList);
+//     const output = document.getElementById('output');
+//     // output.innerHTML = '<h3>'+event.target.id+'</h3>';
+
+//     // console.log(event.type);
+
+//     // console.log(event.clientX);
+//     // console.log(event.clientY);
+//     // console.log(event.offsetX);
+//     // console.log(event.offsetY);
+
+//     console.log(event.altKey);
+//     console.log(event.ctrlKey);
+//     console.log(event.shiftKey);
+// }
+// const buttonClicked = document.getElementById('button');
+
+// // buttonClicked.addEventListener('dblclick',runEvent);
+// buttonClicked.addEventListener('mousedown',runEvent);
+// buttonClicked.addEventListener('mouseup',runEvent);
+
+// function runEvent(event){
+//     console.log('Event type: '+event.type);
+// }
+const output = document.getElementById('output');
+
+// output.addEventListener('mouseup',runEvent);
+// output.addEventListener('mousedown',runEvent);
+// output.addEventListener('mouseenter',runEvent);
+// output.addEventListener('mouseleave',runEvent);
+// output.addEventListener('mouseup',runEvent);
+// output.addEventListener('mouseover',runEvent);
+// output.addEventListener('mouseout',runEvent);
+
+// output.addEventListener('mousemove',runEvent);
+
+const textInput = document.querySelector('input[type = "text"]');
+// console.log(textInput);
+// textInput.addEventListener('keydown',runEvent);
+
+// output.innerHTML = '';
+
+function runEvent(event){
+        // output.style.backgroundColor = "rgb("+event.offsetX+","+event.offsetY+")";
+        // console.log(event.type);
+        // console.log(output);
+        // document.body.style.backgroundColor = "rgb("+event.offsetX+","+event.offsetY+",50)";
+        // output.style.backgroundColor = "rgb("+event.offsetX+","+event.offsetY+",50)";
+        output.innerHTML = '<h4>'+event.target.value+'</h4>';
+        output.style.textAlign = 'center';
+        
+}
+
+console.log(textInput);
+// textInput.addEventListener('focus',Event);
+// textInput.addEventListener('blur',Event);
+textInput.addEventListener('cut',Event);
+textInput.addEventListener('paste',Event);
+
+function Event(event){
+        console.log('Event type: '+event.type);
+}
+
