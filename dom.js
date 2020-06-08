@@ -226,3 +226,68 @@
 //         console.log('Event type: '+event.type);
 // }
 
+//getting submit button
+const submitBtn = document.querySelector('input[type = "submit"]');
+
+//getting itemlist
+const itemList = document.getElementById('items');
+
+//getting delete button
+itemList.addEventListener('click',removeItem);
+
+const filterArea = document.getElementById('filter');
+
+filterArea.addEventListener('keyup',findItem);
+//adding eventListener to submit button
+submitBtn.addEventListener('click',addElement);
+
+function addElement(e){
+        const inputValue = document.getElementById('item').value;
+        if (inputValue != '') {
+                e.preventDefault();
+        
+        //getting input value
+        
+        //creating list tag
+        const li = document.createElement('li');
+        //adding class
+        li.className = "list-group-item";
+        li.appendChild(document.createTextNode(inputValue));
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = "btn btn-danger btn-sm float-right delete";
+        deleteBtn.appendChild(document.createTextNode('X'));
+        // console.log(deleteBtn);
+        li.appendChild(deleteBtn);
+
+        itemList.appendChild(li);
+        // inputValue = null;
+
+        document.getElementById('item').value = '';
+        } else {
+                alert('please enter value');
+        }  
+}
+
+function removeItem(event){
+        if(event.target.classList.contains('delete')){
+                const li = event.target.parentElement;
+                itemList.removeChild(li);
+        }
+        
+}
+
+function findItem(event){
+        const searchItem = event.target.value.toLowerCase();
+
+        const items = itemList.getElementsByTagName('li');
+
+        Array.from(items).forEach(function(item){
+                const itemName = item.firstChild.textContent;
+                if(itemName.toLowerCase().indexOf(searchItem) != -1){
+                      item.style.display = 'block';  
+                }else{
+                        item.style.display = 'none';
+                }
+        })
+
+}
